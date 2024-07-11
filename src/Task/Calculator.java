@@ -8,28 +8,34 @@ public class Calculator {
 		Scanner scanner = new Scanner(System.in);
 
 		System.out.println("Enter first number: ");
-		double num1 = scanner.nextDouble();
+		int num1 = scanner.nextInt();
 
 		System.out.println("Enter an operator (+, -, *, /): ");
 		char operator = scanner.next().charAt(0);
 
 		System.out.println("Enter second number: ");
-		double num2 = scanner.nextDouble();
+		int num2 = scanner.nextInt();
+		double result = 0;
 
-		double result;
+		op op = new op();
 
 		switch (operator) {
 		case '+':
-			result = num1 + num2;
+			result = op.add(num1, num2);
 			break;
 		case '-':
-			result = num1 - num2;
+			result = op.sub(num1, num2);
 			break;
 		case '*':
-			result = num1 * num2;
+			result = op.mult(num1, num2);
 			break;
 		case '/':
-			result = num1 / num2;
+			if (num2 == 0) {
+				System.out.println("Not divisible by 0!");
+				break;
+			} else
+
+				result = op.div(num1, num2);
 			break;
 		default:
 			System.out.println("Invalid operator!");
@@ -37,5 +43,24 @@ public class Calculator {
 		}
 
 		System.out.println("The result is: " + result);
+	}
+}
+
+class op {
+	int add(int a, int b) {
+		return a + b;
+	}
+
+	int sub(int a, int b) {
+		return a - b;
+	}
+
+	int mult(int a, int b) {
+		return a * b;
+	}
+
+	double div(double a, double b) {
+
+		return a / b;
 	}
 }
